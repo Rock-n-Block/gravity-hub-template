@@ -1,23 +1,122 @@
 @import "../../local_modules/normalize.css/normalize";
+@import "../mixins/image.scss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;669;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --bg-color: #12141d;
+  --text-color: #ffffff;
+  --title-color: #fafafa;
+  --bold-color: #fafafa;
+  --accent-color: #ff8e1e;
+  --like-color: #ff0000;
+  --color-orange: #ff8e1e;
+  --color-orange-accent: #e17f1d;
+
+  --container-width: 1250px;
+  --container-paddings: 10px;
+}
+
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  // font-family: 'Orbitron', sans-serif;
 }
 
 body {
-    margin: 0;
+  margin: 0;
+  background-color: var(--bg-color);
+  font-family: 'Poppins', sans-serif;
+  cursor: default;
+}
+
+.container {
+  max-width: var(--container-width);
+  padding: var(--container-paddings);
+  margin: 0 auto;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  color: var(--text-color);
+  font-weight: normal;
+}
+
+b {
+  color: var(--bold-color);
+}
+
+.text {
+  display: inline-block;
+
+  &-accent {
+    color: var(--accent-color);
+  }
+
+  &-title {
+    color: var(--title-color);
+    font-weight: bold;
+  }
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-orange {
+    background-color: var(--color-orange);
+
+    &:hover {
+      background-color: var(--color-orange-accent);
+    }
+  }
+
+  &-login {
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--color-orange-accent);
+    }
+
+    @include before-img(block, 18px, 18px, r) {
+      background-image: url(../img/icons/login.svg);
+      background-size: cover;
+      margin-right: 10px;
+    }
+  }
+}
+
+.logo {
+  background-image: url(../img/logo.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 133px;
+  height: 60px;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+a,
+p,
+.button,
+span {
+  transition: 0.4s ease;
 }

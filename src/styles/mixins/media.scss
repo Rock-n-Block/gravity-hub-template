@@ -1,29 +1,37 @@
 @import "../utils/variables";
 
-@mixin media-tablet {
-
-    @media (min-width: $mediaWidthTablet) {
-        @content;
+// breakpoints
+@mixin b($point) {
+  @if $point==desktop {
+    @media (max-width: 1366px) and (min-width:1024px) {
+      @content ;
     }
-}
+  }
 
-@mixin media-tablet-horizontal {
-
-    @media (min-width: $mediaWidthTabletHorizontal) {
-        @content;
+  @else if $point==tablet {
+    @media (max-width: 1000px) {
+      @content ;
     }
-}
+  }
 
-@mixin media-laptop {
-
-    @media (min-width: $mediaWidthLaptop) {
-        @content;
+  @else if $point==mobile {
+    @media (max-width: 767px) {
+      @content ;
     }
-}
+  }
 
-@mixin media-custom($width) {
+  @else if $point==mobile3x {
 
-    @media (min-width: $width) {
-        @content;
+    @media only screen and (-webkit-min-device-pixel-ratio: 3),
+    only screen and (min-resolution: 3dppx),
+    only screen and (min-resolution: 350dpi) {
+      @content ;
     }
+  }
+
+  @else {
+    @media (max-width: $point + 'px') {
+      @content ;
+    }
+  }
 }
