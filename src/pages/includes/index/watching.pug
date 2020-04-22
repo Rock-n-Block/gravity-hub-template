@@ -1,16 +1,15 @@
 SECTION.block.block-watching
-  DIV.container
+  DIV.container-content
     DIV.block-image
-      p
-      | All Gravity Hub nodes will have “data watchers” — modules for collecting various types of data, such as block headers and block height from other blockchains, exchange rates, etc.
-      |
-      | For each data watcher, a data profile will be set. For a, if a data watcher collects Ethereum block header data, this will need to be done with a certain frequency and reliability.
+      img.block-image-wrap(src='../img/watching_data-3.png', alt='watching data').
+      DIV.block-image-text
+        DIV.block-image-text-wrap
+          P.text All Gravity Hub nodes will have “data watchers” — modules for collecting various types of data, such as block headers and block height from other blockchains, exchange rates, etc.
+          P.text For each data watcher, a data profile will be set. For a, if a data watcher collects Ethereum block header data, this will need to be done with a certain frequency and reliability.
     DIV.block-text
-      H2.text.text-title Nodes
-      P.text
-        B Gravity Hub’s nodes
-          | will be able, for instance, to obtain block headers from the Ethereum network and send them to Waves Platform.
-      P.text If Ethereum block header data is available on Waves Platform, it will be possible to prove that a specific transaction has taken place on Ethereum.  To obtain that data, users will pay reasonable fees.
-      P.text
-        B Gravity Hub
-          | will also be connected to custom chains, which represent a new approach to blockchain customization. Waves Matter, our blockchain engine, can be assembled in any configuration for different purposes.
+      H2.text.text-title
+        | Watching
+        |
+        | data
+      P.text In addition to providing an interoperability protocol, Gravity Hub will help resolve the issue of obtaining information from the outside world, as it will facilitate access of all connected chains to data from outside the blockchain.
+      P.text A member of any network connected to Gravity Hub will be able to request oracle data from any information systems that have APIs — from Google to enterprise ERP systems.

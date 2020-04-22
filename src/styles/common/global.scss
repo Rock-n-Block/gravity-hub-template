@@ -1,9 +1,13 @@
 @import "../../local_modules/normalize.css/normalize";
 @import "../mixins/image.scss";
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;669;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,600,700,800,900|Poppins:100,200,300,400,500,600,700,800,900&display=swap");
+@import "../mixins/media";
 
 :root {
-  --bg-color: #12141d;
+  --bg-color: #353540;
+  --overlay-color: linear-gradient(180deg,
+      rgba(24, 27, 44, 0.95) -5.12%,
+      #0d0f14 102.43%);
   --text-color: #ffffff;
   --title-color: #fafafa;
   --bold-color: #fafafa;
@@ -12,10 +16,13 @@
   --color-orange: #ff8e1e;
   --color-orange-accent: #e17f1d;
 
-  --container-width: 1250px;
-  --container-paddings: 10px;
+  --container-width: 1200px;
+  --container-content-width: 1100px;
+  // --container-width: 1100px;
+  --container-paddings-desctop: 10px 50px;
+  --container-paddings-tablet: 10px 40px;
+  --container-paddings-mobile: 10px 10px;
 }
-
 
 *,
 *::before,
@@ -28,17 +35,49 @@ html {
   // font-family: 'Orbitron', sans-serif;
 }
 
+.overlay {
+  position: relative;
+
+  &-bg {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    left: 0;
+    width: 100%;
+    background: var(--overlay-color);
+    height: 100%;
+    display: block;
+    backdrop-filter: blur(122.323px);
+  }
+}
+
 body {
   margin: 0;
   background-color: var(--bg-color);
-  font-family: 'Poppins', sans-serif;
+  backdrop-filter: blur(122.323px);
+  font-family: "Poppins", sans-serif;
   cursor: default;
 }
 
 .container {
   max-width: var(--container-width);
+  padding: var(--container-paddings-desctop);
+  margin: 0 auto;
+
+  @include b(1024) {
+    padding: var(--container-paddings-tablet);
+  }
+
+  @include b(750) {
+    padding: var(--container-paddings-mobile);
+  }
+}
+
+.container-content {
+  max-width: var(--container-content-width);
   padding: var(--container-paddings);
   margin: 0 auto;
+  padding: 0 40px;
 }
 
 p {
@@ -55,6 +94,7 @@ b {
 
 .text {
   display: inline-block;
+  font-weight: 300;
 
   &-accent {
     color: var(--accent-color);
@@ -63,7 +103,14 @@ b {
   &-title {
     color: var(--title-color);
     font-weight: bold;
+    font-family: Orbitron;
+    letter-spacing: 2px;
   }
+}
+
+.icon-like {
+  color: red;
+  font-size: 17px;
 }
 
 .button {
@@ -104,6 +151,11 @@ b {
   background-size: contain;
   width: 133px;
   height: 60px;
+
+  @include b(550) {
+    width: 130px;
+    height: 55px;
+  }
 }
 
 img {
